@@ -1,0 +1,643 @@
+{
+  "_class" : "hudson.model.Hudson",
+  "assignedLabels" : [
+    {
+      "name" : "master"
+    }
+  ],
+  "mode" : "NORMAL",
+  "nodeDescription" : "the master Jenkins node",
+  "nodeName" : "",
+  "numExecutors" : 2,
+  "description" : null,
+  "jobs" : [
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "alpha_ysl_deployment_wellness",
+      "url" : "http://192.168.113.195:9090/job/alpha_ysl_deployment_wellness/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "newarch_CI",
+      "url" : "http://192.168.113.195:9090/job/newarch_CI/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "newarch_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/newarch_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_ARMSTRONG",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_ARMSTRONG/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_NPR",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_NPR/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_NPR_USETINYDB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_NPR_USETINYDB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_PSD",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_PSD_USETINYDB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD_USETINYDB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_STAB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_STAB/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_OAUTHCLIENT_STAB_USETINYDB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_STAB_USETINYDB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_WEALTHSERVICE_NPR",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_NPR/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_WEALTHSERVICE_NPR_USETINYDB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_NPR_USETINYDB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_WEALTHSERVICE_STAB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_STAB/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_WEALTHSERVICE_STAB_USETINYDB",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_STAB_USETINYDB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_fincheck",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_fincheck/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_fincheck_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_fincheck_usetinydb/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_moneysupport",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_moneysupport/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_moneysupport_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_moneysupport_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_newarch",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_newarch_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch_usetinydb/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_npr",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_npr/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_npr_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_npr_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_nprplus",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_nprplus/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_nprplus_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_nprplus_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_psd",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_psd/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_psd_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_psd_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_sdg",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_sdg/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_sdg_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_sdg_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_smb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_smb/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_smb_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_smb_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_stab",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_stab/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_stab_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_stab_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_wealth",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wealth/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_wealth_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wealth_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_wellness",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wellness/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSL_wellness_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wellness_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_ARMSTRONG",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_ARMSTRONG/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_ARMSTRONG_CI",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_ARMSTRONG_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "oauthclient_armstrong_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/oauthclient_armstrong_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_NPR",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_NPR/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_NPR_CI",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_NPR_CI/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "oauthclient_npr_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/oauthclient_npr_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_PSD",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_PSD/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_PSD_CI",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_PSD_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "oauthclient_psd_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/oauthclient_psd_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_STAB",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_STAB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "oauthclient_stab_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/oauthclient_stab_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "OAUTHCLIENT_STABILIZATION_CI",
+      "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_STABILIZATION_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "sdp2_package_artifact_buildteam_devops",
+      "url" : "http://192.168.113.195:9090/job/sdp2_package_artifact_buildteam_devops/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "spsfeatureCI",
+      "url" : "http://192.168.113.195:9090/job/spsfeatureCI/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "TinyDB_Test_JOb",
+      "url" : "http://192.168.113.195:9090/job/TinyDB_Test_JOb/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "usetinydb_add",
+      "url" : "http://192.168.113.195:9090/job/usetinydb_add/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "WEALTHSERVICE_NPR",
+      "url" : "http://192.168.113.195:9090/job/WEALTHSERVICE_NPR/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "WEALTHSERVICE_NPR_CI",
+      "url" : "http://192.168.113.195:9090/job/WEALTHSERVICE_NPR_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "wealthservice_npr_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/wealthservice_npr_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "WEALTHSERVICE_STAB",
+      "url" : "http://192.168.113.195:9090/job/WEALTHSERVICE_STAB/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "WEALTHSERVICE_STAB_CI",
+      "url" : "http://192.168.113.195:9090/job/WEALTHSERVICE_STAB_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "wealthservice_stab_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/wealthservice_stab_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ysl-fincheck",
+      "url" : "http://192.168.113.195:9090/job/ysl-fincheck/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ysl-newarch",
+      "url" : "http://192.168.113.195:9090/job/ysl-newarch/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSL_ALPHA_PFM",
+      "url" : "http://192.168.113.195:9090/job/YSL_ALPHA_PFM/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLFINCHECK_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLFINCHECK_CI/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslfincheck_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslfincheck_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLKALAM",
+      "url" : "http://192.168.113.195:9090/job/YSLKALAM/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "Yslmoneysupport",
+      "url" : "http://192.168.113.195:9090/job/Yslmoneysupport/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLMONEYSUPPORT_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLMONEYSUPPORT_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslmoneysupport_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslmoneysupport_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "Yslnpr",
+      "url" : "http://192.168.113.195:9090/job/Yslnpr/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLNPR_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLNPR_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnpr_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslnpr_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnprplus",
+      "url" : "http://192.168.113.195:9090/job/yslnprplus/",
+      "color" : "yellow"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnprplus_CI",
+      "url" : "http://192.168.113.195:9090/job/yslnprplus_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnprplus_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslnprplus_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnprplusDeploy",
+      "url" : "http://192.168.113.195:9090/job/yslnprplusDeploy/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnprplusYSLtc",
+      "url" : "http://192.168.113.195:9090/job/yslnprplusYSLtc/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "Yslpsd",
+      "url" : "http://192.168.113.195:9090/job/Yslpsd/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLPSD_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLPSD_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslpsd_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslpsd_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslsdg",
+      "url" : "http://192.168.113.195:9090/job/yslsdg/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLSDG_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLSDG_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslsdg_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslsdg_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslsmb",
+      "url" : "http://192.168.113.195:9090/job/yslsmb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLSMB_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLSMB_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslsmb_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslsmb_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "Yslstab",
+      "url" : "http://192.168.113.195:9090/job/Yslstab/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLSTAB_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLSTAB_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslstab_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslstab_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwealth",
+      "url" : "http://192.168.113.195:9090/job/yslwealth/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLWEALTH_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLWEALTH_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwealth_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslwealth_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "Yslwellness",
+      "url" : "http://192.168.113.195:9090/job/Yslwellness/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLWELLNESS_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLWELLNESS_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwellness_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslwellness_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwellnessAutomationSuite",
+      "url" : "http://192.168.113.195:9090/job/yslwellnessAutomationSuite/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwellnessDeploy",
+      "url" : "http://192.168.113.195:9090/job/yslwellnessDeploy/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwellnessYSLtc",
+      "url" : "http://192.168.113.195:9090/job/yslwellnessYSLtc/",
+      "color" : "blue"
+    }
+  ],
+  "overallLoad" : {
+    
+  },
+  "primaryView" : {
+    "_class" : "hudson.model.AllView",
+    "name" : "all",
+    "url" : "http://192.168.113.195:9090/"
+  },
+  "quietingDown" : false,
+  "slaveAgentPort" : 0,
+  "unlabeledLoad" : {
+    "_class" : "jenkins.model.UnlabeledLoadStatistics"
+  },
+  "useCrumbs" : true,
+  "useSecurity" : true,
+  "views" : [
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "OAUTHCLIENT",
+      "url" : "http://192.168.113.195:9090/view/OAUTHCLIENT/"
+    },
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "Wealth",
+      "url" : "http://192.168.113.195:9090/view/Wealth/"
+    },
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "YSL",
+      "url" : "http://192.168.113.195:9090/view/YSL/"
+    },
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "YSL_CI",
+      "url" : "http://192.168.113.195:9090/view/YSL_CI/"
+    },
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "YSL_KALAM",
+      "url" : "http://192.168.113.195:9090/view/YSL_KALAM/"
+    },
+    {
+      "_class" : "hudson.model.AllView",
+      "name" : "all",
+      "url" : "http://192.168.113.195:9090/"
+    },
+    {
+      "_class" : "hudson.model.ListView",
+      "name" : "sdp2_artifacts",
+      "url" : "http://192.168.113.195:9090/view/sdp2_artifacts/"
+    }
+  ]
+}
