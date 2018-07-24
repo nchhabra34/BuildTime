@@ -3,5 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="D:/Software/org.json.jar/org.json.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/cron-utils-4.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/htime-1.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/joda-time-2.8.2.jar"/>
+	<classpathentry kind="lib" path="D:/Software/jar_files/slf4j-api-1.7.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

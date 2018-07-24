@@ -24,7 +24,7 @@ class ListJobs {
 	HttpURLConnection conn=cu.createConnection(jenurl);
 
 	int code = conn.getResponseCode();
-	System.out.println(code);
+	//System.out.println(code);
 	InputStream ips=  conn.getInputStream();
 	
 	BufferedReader buf = new BufferedReader(new InputStreamReader(ips));
@@ -86,7 +86,7 @@ public Map parseJsondata(String output) throws JSONException
 		for (Entry<String,String> entry : jobMap.entrySet()) {
 		    String key = entry.getKey();
 		    String thing = entry.getValue();
-		    System.out.println(key+"-->"+thing);
+		    //System.out.println(key+"-->"+thing);
 		}
 		return jobMap;
 

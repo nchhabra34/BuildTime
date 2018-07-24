@@ -14,6 +14,9 @@ public class ConnectionUtility {
 		connection.setRequestMethod("GET");
 		 String userpass = "builder" + ":" + "CIAdmin4dev";
 		 String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
+		 connection.setRequestProperty("Accept", "application/xml");
+		 connection.setRequestProperty("Content-Type", "application/xml");
+
 
 		 connection.setRequestProperty ("Authorization", basicAuth);
 		connection.connect();

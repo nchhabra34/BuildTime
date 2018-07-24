@@ -51,7 +51,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_OAUTHCLIENT_PSD",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -75,7 +75,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_WEALTHSERVICE_NPR",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_NPR/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -87,7 +87,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_WEALTHSERVICE_STAB",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_WEALTHSERVICE_STAB/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
