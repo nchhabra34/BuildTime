@@ -47,15 +47,15 @@ public class jobXmlParser {
 		String FILE="D:/dap1/FetchBuildTime/Resources/xml/xmldata.csv";
 		ArrayList<String[]> xmldata = new ArrayList<String[]>();
 		System.out.println("Entrted n jobxml parser class");
-		Pattern p = Pattern.compile("(?i).*OAUTHCLIENT.*");
-		Matcher m;
-		boolean b=false;
+		//Pattern p = Pattern.compile("(?i).*OAUTHCLIENT.*");
+		//Matcher m;			// Commented for regular expression confition
+		//boolean b=false;
 		for (Entry<String, String> entry : jobmap.entrySet()) {
 		    String key = entry.getKey();
 		    String thing = entry.getValue();
-		    m=p.matcher(key);
-		    b=m.matches();
-		    if (b == true){
+		  //  m=p.matcher(key);
+		   // b=m.matches();			// Commented for regular expression confition
+		   // if (b == true){
 		    ConnectionUtility cu= new ConnectionUtility();
 		    
 		    System.out.println(thing+"config.xml");
@@ -65,7 +65,7 @@ public class jobXmlParser {
 		 conn.connect();
 		 InputStream ips ;
 		 ips= conn.getInputStream();
-		 File file = new File("D:/dap1/FetchBuildTime/Resources/"+key+".xml");
+		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml");
 		 URL url = new URL(thing+"config.xml");
 		 BufferedInputStream bis = new BufferedInputStream(ips);
 	        FileOutputStream fis = new FileOutputStream(file);
@@ -82,7 +82,7 @@ public class jobXmlParser {
 	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	        try{
 	        DocumentBuilder builder = factory.newDocumentBuilder();
-	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/"+key+".xml"));
+	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml"));
 	        doc.getDocumentElement().normalize();
 	        
 	      NodeList nodelist3 = doc.getElementsByTagName("spec");
@@ -248,9 +248,9 @@ public class jobXmlParser {
 	        	e.printStackTrace();
 	        }
 	        }
-		    else
-		    {System.out.println("not matched");}
-		}
+		    //else				// Commented for regular expression confition
+		    //{System.out.println("not matched");}
+		//}
 	sd.writeDataAtOnce(FILE, xmldata);
 }
 }

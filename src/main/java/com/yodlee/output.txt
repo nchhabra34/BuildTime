@@ -51,7 +51,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "newarch_CI",
       "url" : "http://192.168.113.195:9090/job/newarch_CI/",
-      "color" : "red"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -189,7 +189,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_npr",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_npr/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -201,7 +201,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_nprplus",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_nprplus/",
-      "color" : "disabled"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -213,7 +213,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_psd",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_psd/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
