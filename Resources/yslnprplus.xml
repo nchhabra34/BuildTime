@@ -1,0 +1,126 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This job configured to run build from 192.168.56.84 server </description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>CHANGELIST</name>
+          <description>Changelist on which the QA Build should happen</description>
+          <defaultValue>0</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.56.84</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/opt/build/src/razor_yslnprplus</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>if [ ${CHANGELIST} -eq 0 ];
+then
+   echo &quot;Invalid Changelist&quot;
+   exit 1
+fi
+
+source /opt/builder/.bash_profile
+cd /opt/build/src/razor_yslnprplus/build_scripts
+source /opt/build/src/razor_yslnprplus/build_scripts/build.conf
+p4 sync //builds/ysl/nprplus/commonyslbuild.sh
+#sh -x ci_commonyslbuild.sh build ${CHANGELIST}
+sh -x commonyslbuild.sh build ${CHANGELIST}
+
+
+echo BUILD_NUMBER=`cat build.properties | grep Build_Number | cut -d &quot;=&quot; -f2`
+
+cd /opt/build/src/razor_yslnprplus/
+echo &quot;BUILD_NUMBER=`cat build_scripts/build.properties | grep Build_Number | cut -d &quot;=&quot; -f2`&quot; &gt; bldno.properties</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.8">
+      <project></project>
+      <properties>sonar.projectKey=my:YSLNprPlus
+sonar.projectName=YSLNprPlus
+sonar.scm.disabled=false
+sonar.projectVersion=1.0.0
+sonar.perforce.port=192.168.210.178:16060
+sonar.perforce.username=builder
+sonar.perforce.password.secured=h@ndsFr33
+sonar.perforce.clientName=blr-bld-jenkins3.builder.yslnprplus
+sonar.sources=modules/APIGateway,modules/jdbcservice,modules/configservice,modules/logging,modules/security,modules/dom,modules/domx,modules/util-filtering,modules/yccdom,modules/common,modules/RestBridge,modules/cacheservice,modules/cachesupportutil,modules/notifications,modules/LuceneService,modules/framework/gen,modules/MQservice,modules/mongoservice,modules/yccdomx,modules/core-services/authentication-crypto-services,modules/core-services/authentication-services,modules/core-services/context.definition.service,modules/core-services/core.support.common,modules/core-services/core.support.util,modules/core-services/session.services,modules/core-services/core.validation.services
+sonar.java.binaries=/tmp/empty
+
+sonar.java.binaries=modules/dapi/target/classes
+sonar.jacoco.reportPath=modules/dapi/target/jacoco.exec
+sonar.dynamicAnalysis=reuseReports
+sonar.java.coveragePlugin=jacoco
+sonar.jacoco.reportMissing.force.zero=true</properties>
+      <javaOpts></javaOpts>
+      <additionalArguments></additionalArguments>
+      <jdk>(Inherit From Job)</jdk>
+      <task></task>
+    </hudson.plugins.sonar.SonarRunnerBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.textfinder.TextFinderPublisher plugin="text-finder@1.10">
+      <regexp>BUILD FAILURE</regexp>
+      <succeedIfFound>false</succeedIfFound>
+      <unstableIfFound>true</unstableIfFound>
+      <alsoCheckConsoleOutput>true</alsoCheckConsoleOutput>
+    </hudson.plugins.textfinder.TextFinderPublisher>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.35.2">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>/opt/build/src/razor_dapi/bldno.properties</propertiesFile>
+              <failTriggerOnMissing>false</failTriggerOnMissing>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+              <useMatrixChild>false</useMatrixChild>
+              <onlyExactRuns>false</onlyExactRuns>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
+          </configs>
+          <projects>yslnprplusDeploy</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs class="empty-list"/>
+          <projects>yslnprplusYSLtc</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>true</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>product=YSL
+branch=nprplus
+buildtype=nightly
+revision=${CHANGELIST}</properties>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>NightlyProwler_YSL_nprplus_usetinydb</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>

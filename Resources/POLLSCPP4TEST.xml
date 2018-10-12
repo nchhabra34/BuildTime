@@ -1,0 +1,65 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="org.jenkinsci.plugins.p4.PerforceScm" plugin="p4@1.9.2">
+    <credential></credential>
+    <workspace class="org.jenkinsci.plugins.p4.workspace.ManualWorkspaceImpl">
+      <charset>none</charset>
+      <pinHost>false</pinHost>
+      <name>jenkins-${NODE_NAME}-${JOB_NAME}-${EXECUTOR_NUMBER}</name>
+      <spec>
+        <allwrite>false</allwrite>
+        <clobber>true</clobber>
+        <compress>false</compress>
+        <locked>false</locked>
+        <modtime>false</modtime>
+        <rmdir>false</rmdir>
+        <streamName></streamName>
+        <line>LOCAL</line>
+        <view></view>
+        <changeView></changeView>
+        <type>WRITABLE</type>
+        <serverID></serverID>
+        <backup>true</backup>
+      </spec>
+    </workspace>
+    <populate class="org.jenkinsci.plugins.p4.populate.AutoCleanImpl">
+      <have>true</have>
+      <force>false</force>
+      <modtime>false</modtime>
+      <quiet>true</quiet>
+      <pin></pin>
+      <parallel>
+        <enable>false</enable>
+        <threads>4</threads>
+        <minfiles>1</minfiles>
+        <minbytes>1024</minbytes>
+      </parallel>
+      <replace>true</replace>
+      <delete>true</delete>
+      <tidy>false</tidy>
+    </populate>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>*/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>

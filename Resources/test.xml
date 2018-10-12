@@ -1,0 +1,61 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This job configured to run build from 192.168.56.84 server </description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>CHANGELIST</name>
+          <description>Changelist on which the QA Build should happen</description>
+          <defaultValue>0</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.56.84</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/opt/build/src/razor_yslnprplus</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo hi
+source /opt/build/src/razor_yslnprplus/build_scripts/build.conf</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.8">
+      <project></project>
+      <properties>sonar.projectKey=my:YSLNprPlus
+sonar.projectName=YSLNprPlus
+sonar.scm.disabled=true
+sonar.projectVersion=1.0.0
+sonar.perforce.port=192.168.210.178:16060
+sonar.perforce.username=builder
+sonar.perforce.password.secured=h@ndsFr33
+sonar.perforce.clientName=blr-bld-jenkins3.builder.yslnprplus
+sonar.sources=modules/dapi,modules/APIGateway,modules/jdbcservice,modules/configservice,modules/logging,modules/security,modules/dom,modules/domx,modules/util-filtering,modules/yccdom,modules/common,modules/RestBridge,modules/cacheservice,modules/cachesupportutil,modules/notifications,modules/LuceneService,modules/framework/gen,modules/MQservice,modules/mongoservice,modules/yccdomx,modules/core-services/authentication-crypto-services,modules/core-services/authentication-services,modules/core-services/context.definition.service,modules/core-services/core.support.common,modules/core-services/core.support.util,modules/core-services/session.services,modules/core-services/core.validation.services
+sonar.java.binaries=modules/dapi/target/classes
+sonar.jacoco.reportPath=modules/dapi/target/jacoco.exec
+sonar.dynamicAnalysis=reuseReports
+sonar.exclusions=**/*l2distributedCache*
+sonar.java.coveragePlugin=jacoco
+sonar.jacoco.reportMissing.force.zero=true</properties>
+      <javaOpts></javaOpts>
+      <additionalArguments></additionalArguments>
+      <jdk>(Inherit From Job)</jdk>
+      <task></task>
+    </hudson.plugins.sonar.SonarRunnerBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
