@@ -228,8 +228,8 @@ public class JobJsonParsing {
 							e.printStackTrace();
 						}
 						}
-						System.out.println("jobName	"+"url	"+"estimatedDuration	"+"lastresult"+"timestamp"+"buildable"+"labelExpression");
-						System.out.println(jobName+url+estimatedDuration+lastresult+timestamp+buildable+labelExpression);
+						//System.out.println("jobName	"+"url	"+"estimatedDuration	"+"lastresult"+"timestamp"+"buildable"+"labelExpression");
+						//System.out.println(jobName+url+estimatedDuration+lastresult+timestamp+buildable+labelExpression);
 						
 						
 						sd.savejsondate(jobName, url, estimatedDuration , lastresult , timestamp , buildable , labelExpression,jsondata );

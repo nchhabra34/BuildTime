@@ -46,19 +46,19 @@ public class jobXmlParser {
 		String description = null;
 		String FILE="D:/dap1/FetchBuildTime/Resources/xml/xmldata.csv";
 		ArrayList<String[]> xmldata = new ArrayList<String[]>();
-		System.out.println("Entrted n jobxml parser class");
+		//System.out.println("Entrted n jobxml parser class");
 		//Pattern p = Pattern.compile("(?i).*OAUTHCLIENT.*");
-		//Matcher m;			// Commented for regular expression confition
+	//	Matcher m;			// Commented for regular expression confition
 		//boolean b=false;
 		for (Entry<String, String> entry : jobmap.entrySet()) {
 		    String key = entry.getKey();
 		    String thing = entry.getValue();
-		  //  m=p.matcher(key);
-		   // b=m.matches();			// Commented for regular expression confition
-		   // if (b == true){
+		   // m=p.matcher(key);
+		 //  b=m.matches();			// Commented for regular expression confition
+		 //   if (b == true){
 		    ConnectionUtility cu= new ConnectionUtility();
 		    
-		    System.out.println(thing+"config.xml");
+		    //System.out.println(thing+"config.xml");
 		 HttpURLConnection conn = cu.createConnection(thing+"config.xml");
 		 
 		 System.out.println(conn.getContentType());
@@ -68,7 +68,7 @@ public class jobXmlParser {
 		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml");
 		 URL url = new URL(thing+"config.xml");
 		 BufferedInputStream bis = new BufferedInputStream(ips);
-	        FileOutputStream fis = new FileOutputStream(file);
+	     FileOutputStream fis = new FileOutputStream(file);
 	        
 	        byte[] buffer = new byte[1024];
 	        int count=0;
@@ -123,8 +123,15 @@ public class jobXmlParser {
 	  CronDescriptor descriptor = CronDescriptor.instance(Locale.UK);
 	  
 	  
-	
+	try{
 	  System.out.println(cronnumber[i].charAt(0));
+	}
+	catch(Exception e)
+	{
+		
+		
+	}
+	  try{
 	  if (cronnumber[i].charAt(0) ==  '#' )
 	 {
 		  enable="false";
@@ -135,6 +142,12 @@ public class jobXmlParser {
 	  else
 	  {
 		  enable="true";
+		  
+	  }
+	  }
+	  catch(Exception e)
+	  {
+		  cronnumber[i].isEmpty();
 		  
 	  }
 	  Cron quartzCron = null;
@@ -248,8 +261,8 @@ public class jobXmlParser {
 	        	e.printStackTrace();
 	        }
 	        }
-		    //else				// Commented for regular expression confition
-		    //{System.out.println("not matched");}
+		   // else				// Commented for regular expression confition
+		  //  {System.out.println("not matched");}
 		//}
 	sd.writeDataAtOnce(FILE, xmldata);
 }

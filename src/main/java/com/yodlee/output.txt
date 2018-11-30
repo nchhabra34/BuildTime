@@ -49,18 +49,6 @@
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
-      "name" : "newarch_CI",
-      "url" : "http://192.168.113.195:9090/job/newarch_CI/",
-      "color" : "disabled"
-    },
-    {
-      "_class" : "hudson.model.FreeStyleProject",
-      "name" : "newarch_CI_usetinydb",
-      "url" : "http://192.168.113.195:9090/job/newarch_CI_usetinydb/",
-      "color" : "blue"
-    },
-    {
-      "_class" : "hudson.model.FreeStyleProject",
       "name" : "nextgenyccNPR",
       "url" : "http://192.168.113.195:9090/job/nextgenyccNPR/",
       "color" : "blue"
@@ -69,7 +57,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "ngyccapprelease",
       "url" : "http://192.168.113.195:9090/job/ngyccapprelease/",
-      "color" : "blue"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -105,7 +93,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_OAUTHCLIENT_PSD",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -177,13 +165,13 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_newarch",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch/",
-      "color" : "disabled"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_newarch_usetinydb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch_usetinydb/",
-      "color" : "disabled"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -225,7 +213,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_sdg",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_sdg/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -237,7 +225,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_smb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_smb/",
-      "color" : "yellow"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -261,7 +249,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_wealth",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wealth/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -357,7 +345,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "OAUTHCLIENT_STABILIZATION_CI",
       "url" : "http://192.168.113.195:9090/job/OAUTHCLIENT_STABILIZATION_CI/",
-      "color" : "blue"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -387,7 +375,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "test",
       "url" : "http://192.168.113.195:9090/job/test/",
-      "color" : "red"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -453,13 +441,19 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "ysl-newarch",
       "url" : "http://192.168.113.195:9090/job/ysl-newarch/",
-      "color" : "notbuilt"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "YSL_ALPHA_PFM",
       "url" : "http://192.168.113.195:9090/job/YSL_ALPHA_PFM/",
       "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ysleinstein",
+      "url" : "http://192.168.113.195:9090/job/ysleinstein/",
+      "color" : "red"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -493,6 +487,18 @@
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
+      "name" : "YSLNEWARCH_CI",
+      "url" : "http://192.168.113.195:9090/job/YSLNEWARCH_CI/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnewarch_CI_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/yslnewarch_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
       "name" : "Yslnpr",
       "url" : "http://192.168.113.195:9090/job/Yslnpr/",
       "color" : "blue"
@@ -519,7 +525,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslnprplus_CI",
       "url" : "http://192.168.113.195:9090/job/yslnprplus_CI/",
-      "color" : "red"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -537,7 +543,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslnprplusYSLtc",
       "url" : "http://192.168.113.195:9090/job/yslnprplusYSLtc/",
-      "color" : "blue"
+      "color" : "red"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -585,7 +591,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "YSLSMB_CI",
       "url" : "http://192.168.113.195:9090/job/YSLSMB_CI/",
-      "color" : "blue"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -627,6 +633,12 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslwealth_CI_usetinydb",
       "url" : "http://192.168.113.195:9090/job/yslwealth_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslwealthtemp",
+      "url" : "http://192.168.113.195:9090/job/yslwealthtemp/",
       "color" : "blue"
     },
     {
@@ -692,11 +704,6 @@
       "_class" : "hudson.model.ListView",
       "name" : "OAUTHCLIENT",
       "url" : "http://192.168.113.195:9090/view/OAUTHCLIENT/"
-    },
-    {
-      "_class" : "hudson.model.ListView",
-      "name" : "TestJobs",
-      "url" : "http://192.168.113.195:9090/view/TestJobs/"
     },
     {
       "_class" : "hudson.model.ListView",

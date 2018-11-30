@@ -1,8 +1,16 @@
 package main.java.com.yodlee;
 
 import java.io.IOException;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.ServerAddress;
+import com.mongodb.MongoCredential;
+import com.mongodb.MongoClientOptions;
 
 public class ConnectionUtility {
 
@@ -29,4 +37,14 @@ public class ConnectionUtility {
 			
 	}
 	
+	public void mongoConnection()
+	{
+		
+		MongoClient mongoClient = new MongoClient("127.0.0.1" , 27017 );
+		
+		List db=mongoClient.getDatabaseNames();
+		System.out.println(db);
+		
+		
+	}
 }

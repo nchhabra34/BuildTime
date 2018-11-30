@@ -11,7 +11,7 @@ public class MainTest {
 		
 		CsvMerge cm = new CsvMerge();
 		ArrayList<String[]> finaldata= cm.filereader();
-		cm.addfinaldata(finaldata);
+		//cm.addfinaldata(finaldata);
 	}
 
 }
