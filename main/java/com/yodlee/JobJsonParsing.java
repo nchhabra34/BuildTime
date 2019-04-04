@@ -63,7 +63,7 @@ public class JobJsonParsing {
 	        while ((s=buf.readLine()) != null) {
 	        	
 	            
-	            //System.out.println(s);
+	          
 	           sb.append(s+'\r');
 	          
 	        		
@@ -85,7 +85,7 @@ public class JobJsonParsing {
 		    
 	        sd.writeDataAtOnce(FILE, jsondata);
 		}
-			//call method to save in db, iterate over jobData and save to db
+		
 			
 			
 		}
@@ -93,22 +93,15 @@ public class JobJsonParsing {
 		
 		void parseJobData(String jobdata) throws JSONException
 		{
-			
-			// Jobdata contains joburl eg. http://192.168.211.247:9090/jenkins/job/DITDeployment/
-			//creating the json object of URL
 			JSONObject jsonObj = new JSONObject(jobdata);
-			//System.out.println("jsonObj output is" + jsonObj.toString());
 			 JSONObject jlastbuildnumber = new JSONObject(jsonObj.get("lastBuild"));
-			//checking the weather the job has ran once or not.
-			 //jsonobject require to get the healthreport 
-			 
+			
 			 
 			 System.out.println(jsonObj.get("url"));
 			
 			 int lastbuilnumber; 
 			 String jobName;
-			// String healthReport;
-			 String labelExpression;
+			 String labelExpression = null;
 			 boolean buildableboolean;
 			 String buildable;
 			 String url=jsonObj.get("url").toString();
@@ -119,7 +112,13 @@ public class JobJsonParsing {
 				 lastbuilnumber=0;
 				 jobName=jsonObj.getString("name");
 				 //healthReport="0";
+				 try{
 				 labelExpression=jsonObj.getString("labelExpression");
+				 }
+				 catch(Exception e)
+				 {
+					 System.out.println("not found");
+				 }
 				 buildableboolean=jsonObj.getBoolean("buildable");
 				 }
 			 else
@@ -128,28 +127,12 @@ public class JobJsonParsing {
 				 jlastbuildnumber=(JSONObject) jsonObj.get("lastBuild");
 				 lastbuilnumber=(int) jlastbuildnumber.get("number");
 				 jobName=jsonObj.getString("name");
-				 //System.out.println("Healthreport-->"+jsonObj.getString("healthReport"));
-				 //JSONArray ja = new JSONArray(jsonObj.getJSONArray("healthReport"));
-				 //int count=ja.length();
-				 //System.out.println("count is -->"+count);
-				 
-				 //JSONObject jhealthreport = new JSONObject(jsonObj.getJSONObject("healthReport"));
-				 
-				// System.out.println("jhealth-->"+ jhealthreport.toString());
-				// healthReport=jhealthreport.getString("score");
+				
 				 buildableboolean=jsonObj.getBoolean("buildable");
 				 
 				 url=jsonObj.get("url").toString();
 				 labelExpression=jsonObj.getString("labelExpression");
 			 }
-			/* 
-			 System.out.println("final output");
-			 System.out.println("lastbuilnumber-->"+lastbuilnumber);
-			 System.out.println("jobName-->"+jobName);
-			// System.out.println("healthReport"+healthReport);
-			 System.out.println("url-->"+url);
-			 System.out.println("labelExpression-->"+labelExpression);*/
-			 
 			 if(buildableboolean == true)
 			 {
 				 
@@ -205,16 +188,13 @@ public class JobJsonParsing {
 					        while ((s=buf.readLine()) != null) {
 					        	
 					            
-					            //System.out.println(s);
+					           
 					           sb.append(s+'\n');
 					           
 					        		
 					        }   
 					        buf.close();
 					        output2=sb.toString();
-					       // System.out.println(output2);
-					        
-					     // Creating a json object from new output we have got during the connection.
 					        JSONObject jjobdata = new JSONObject(output2);
 					        System.out.println(jjobdata.toString());
 							duration=jjobdata.get("duration").toString();
@@ -228,8 +208,8 @@ public class JobJsonParsing {
 							e.printStackTrace();
 						}
 						}
-						System.out.println("jobName	"+"url	"+"estimatedDuration	"+"lastresult"+"timestamp"+"buildable"+"labelExpression");
-						System.out.println(jobName+url+estimatedDuration+lastresult+timestamp+buildable+labelExpression);
+						//System.out.println("jobName	"+"url	"+"estimatedDuration	"+"lastresult"+"timestamp"+"buildable"+"labelExpression");
+						//System.out.println(jobName+url+estimatedDuration+lastresult+timestamp+buildable+labelExpression);
 						
 						
 						sd.savejsondate(jobName, url, estimatedDuration , lastresult , timestamp , buildable , labelExpression,jsondata );

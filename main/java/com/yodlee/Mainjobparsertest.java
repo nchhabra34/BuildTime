@@ -1,44 +1,40 @@
-	package main.java.com.yodlee;
+package main.java.com.yodlee;
 
+import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Savepoint;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Set;
 
-import org.quartz.core.QuartzScheduler;
-import org.w3c.dom.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.cronutils.descriptor.CronDescriptor;
+import com.cronutils.mapper.CronMapper;
 import com.cronutils.model.Cron;
 import com.cronutils.model.CronType;
 import com.cronutils.model.definition.CronDefinition;
 import com.cronutils.model.definition.CronDefinitionBuilder;
 import com.cronutils.model.field.CronField;
 import com.cronutils.model.field.CronFieldName;
-import com.cronutils.model.field.constraint.FieldConstraints;
-import com.cronutils.model.field.definition.DayOfWeekFieldDefinition;
 import com.cronutils.parser.CronParser;
-import com.opencsv.CSVReader;
 
-import javax.xml.parsers.*;
-
-import java.io.*;
-
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-
-public class jobXmlParser {
-
-	public void jbXmlParser(Map<String, String> jobmap) throws IOException, ParserConfigurationException, SAXException
+public class Mainjobparsertest {
+	public void jbXmlParser() throws IOException, ParserConfigurationException, SAXException 
 	{
 			
 		String enable = null;
@@ -46,16 +42,7 @@ public class jobXmlParser {
 		String description = null;
 		String FILE="D:/dap1/FetchBuildTime/Resources/xml/xmldata.csv";
 		ArrayList<String[]> xmldata = new ArrayList<String[]>();
-		//System.out.println("Entrted n jobxml parser class");
-		//Pattern p = Pattern.compile("(?i).*OAUTHCLIENT.*");
-	//	Matcher m;			// Commented for regular expression confition
-		//boolean b=false;
-		for (Entry<String, String> entry : jobmap.entrySet()) {
-		    String key = entry.getKey();
-		    String thing = entry.getValue();
-		   // m=p.matcher(key);
-		 //  b=m.matches();			// Commented for regular expression confition
-		 //   if (b == true){
+		String thing="http://192.168.113.195:9090/view/YSL/job/NightlyProwler_YSL_wellness/";
 		    ConnectionUtility cu= new ConnectionUtility();
 		    
 		    //System.out.println(thing+"config.xml");
@@ -65,7 +52,7 @@ public class jobXmlParser {
 		 conn.connect();
 		 InputStream ips ;
 		 ips= conn.getInputStream();
-		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml");
+		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+"NightlyProwler_YSL_wellness"+".xml");
 		 URL url = new URL(thing+"config.xml");
 		 BufferedInputStream bis = new BufferedInputStream(ips);
 	     FileOutputStream fis = new FileOutputStream(file);
@@ -82,7 +69,7 @@ public class jobXmlParser {
 	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	        try{
 	        DocumentBuilder builder = factory.newDocumentBuilder();
-	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml"));
+	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+"NightlyProwler_YSL_wellness"+".xml"));
 	        doc.getDocumentElement().normalize();
 	        
 	      NodeList nodelist3 = doc.getElementsByTagName("spec");
@@ -103,17 +90,19 @@ public class jobXmlParser {
 	     {
 	    	// System.out.println("timestamp is empty");
 	    	 
-	    	 sd.savexmldate(key, null, null, null, xmldata);
+	    	 sd.savexmldate(thing, null, null, null, xmldata);
 	    	 
 	     }
 	     else
 	     {
 	    String [] cronnumber=  timestamp.split("\n");
 	    
+	   Map<String, String> cronmaptype = new HashMap<>();
 	    for (int i=0;i<cronnumber.length;i++)
 	    {
 	    	
-	    	Jsondata jd = new Jsondata();
+	    	
+	    System.out.println("String number-->"+i+cronnumber[i]);
 	    	
 	    
 	  
@@ -124,7 +113,7 @@ public class jobXmlParser {
 	  
 	  
 	try{
-	  System.out.println(cronnumber[i].charAt(0));
+	  //System.out.println(cronnumber[i].charAt(0));
 	}
 	catch(Exception e)
 	{
@@ -154,8 +143,7 @@ public class jobXmlParser {
 	  try
 	  {
 	  quartzCron= parser.parse(cronnumber[i]);
-	  description = descriptor.describe(parser.parse(cronnumber[i]));
-	  System.out.println(description);
+	  
 	  }
 	  catch(Exception e)
 	  {
@@ -171,7 +159,17 @@ public class jobXmlParser {
 	  else
 	  {
 	  System.out.println(quartzCron.asString());
+	 
+	
+	  description = descriptor.describe(parser.parse(cronnumber[i]));
+	  //System.out.println(description);
+	  System.out.println(cronnumber[i]+"-->"+description);
+	  cronmaptype.put(cronnumber[i], description);
+	  
+	  
 	 // quartzCron.
+	  
+	  
 	  CronFieldName Minute= CronFieldName.MINUTE;
 	  CronFieldName Hour= CronFieldName.HOUR;
 	  CronFieldName Days=CronFieldName.DAY_OF_WEEK;
@@ -188,14 +186,14 @@ public class jobXmlParser {
 	String getdays=days.getExpression().asString();
 	
 //	System.out.println("Get Days As-->"+getdays);
-	String numOfdays [] = getdays.split(",");
+	//String numOfdays [] = getdays.split(",");
 	
-	for(int i1=0;i1<numOfdays.length;i1++)
+	/*for(int i1=0;i1<numOfdays.length;i1++)
 	{
 		
 		//System.out.println(numOfdays[i1]);
 	}
-	String daysinweek[] = new String[numOfdays.length] ;
+	/*String daysinweek[] = new String[numOfdays.length] ;
 	
 		for (int i1=0;i1<numOfdays.length;i1++)
 		{
@@ -230,7 +228,7 @@ public class jobXmlParser {
 			
 		}
 		String makedayslist = null;
-		for (int i1=0;i1<daysinweek.length;i1++)
+		/*for (int i1=0;i1<daysinweek.length;i1++)
 		{
 			//System.out.println(daysinweek[i1]);
 			if(makedayslist == null)
@@ -241,17 +239,19 @@ public class jobXmlParser {
 			{
 			makedayslist=makedayslist+","+daysinweek[i1];
 			}
-		}
+		}*/
 		
-		//.setCrondescription(cronnumber[i]);
-		jd.setJobName(key);
-		sd.savexmldate(key, cronnumber[i], description, enable,xmldata);
+		
+	
 	
 	    }
 	  
 	     }
+	    savexmldate(thing,cronmaptype,enable,xmldata);
+	   
 	     }
 	     
+	    
 	        }
 	       
 	        catch(ParserConfigurationException e)
@@ -259,10 +259,45 @@ public class jobXmlParser {
 	        	e.printStackTrace();
 	        }
 	        }
-		   // else				// Commented for regular expression confition
-		  //  {System.out.println("not matched");}
-		//}
-	sd.writeDataAtOnce(FILE, xmldata);
-}
-}
+		   
+	
+	
 
+	void savexmldate(String jobname,Map<String, String> cronmap,String enable, ArrayList<String[]> writerlist)
+	{
+		
+		Map<String, String> documentmap= new HashMap<String, String>();
+		documentmap.put("Jobname", jobname);
+		int i=1;
+		
+		for (Entry<String, String> entry : cronmap.entrySet()) {
+		    String time = entry.getKey();
+		    String thing = entry.getValue();
+		    documentmap.put("crontime"+i, time );
+		    documentmap.put("description"+i,thing );
+		    }
+		
+		for (Entry<String, String> entry : documentmap.entrySet()) {
+		    String time = entry.getKey();
+		    String thing = entry.getValue();
+		    System.out.println(time +"-->"+thing);
+		    }
+		
+		
+		
+		
+	
+		
+	}
+
+
+	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+
+		
+		Mainjobparsertest test = new Mainjobparsertest();
+		test.jbXmlParser();
+		
+	}
+		
+
+}
