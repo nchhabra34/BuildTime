@@ -9,7 +9,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.json.JSONException;
 import org.xml.sax.SAXException; 
 
-import com.mongodb.client.MongoClient;
+import com.mongodb.MongoClient;
+
+
 
 
 
@@ -30,7 +32,12 @@ ArrayList<String[]> finaldata= cm.filereader();
 //cm.addfinaldata(finaldata);
 
 ConnectionUtility cu = new ConnectionUtility();
-cu.mongoConnection();
+MongoClient mc=(MongoClient) cu.mongoConnection();
+
+
+System.out.println(mc.getDatabase("BuildTimeApp").getCollection("ci_data").find());
+
+
 
 
 

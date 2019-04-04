@@ -14,7 +14,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 
 
 
@@ -82,8 +82,10 @@ csvDataFilter(finaldata);
 return finaldata;
 	}
 	
+	// Merging the diffrent jobs to single jobs
 	
 	
+	// Filtering the CI And Nightly Data Seprately
 void csvDataFilter(ArrayList<String []> finaldata)
 	{
 	

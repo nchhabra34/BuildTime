@@ -1,0 +1,85 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This will be the CI job for YSL running from 192.168.210.72</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.210.72</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H */3 * * *
+</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>source ~/.bash_profile
+cd /opt/build/src/razor_yslpsd/build_scripts
+source build.conf
+
+
+BNB=`grep Build_Number ci.properties |awk -F= &apos;{print $2}&apos;`
+sh ci_commonyslbuild.sh ci
+BNA=`grep Build_Number ci.properties |awk -F= &apos;{print $2}&apos;`
+
+rm -rf UPDATEDB &gt; /dev/null
+
+# Get Build revision #
+#revision=`cat buildlogs/sync.log |tail -1|awk -F@ &apos;{print $2}&apos;|cut -d&apos; &apos; -f1`
+revision=$BNA
+
+if ! [[ $revision =~ ^-?[0-9]+$ ]]
+then
+  echo &quot;*** Build Revision Not found ***&quot;
+  exit 1
+fi
+
+if [ &quot;$BNB&quot; -eq &quot;$BNA&quot; ]
+then
+  echo &quot;No New Build, skipping updating tinyDB ..&quot;
+else
+  echo &quot;New Build, Updating tinyDB with Build #: $BNA&quot;
+  echo &quot;product=YSL&quot; &gt;  UPDATEDB
+  echo &quot;branch=psd&quot; &gt;&gt;  UPDATEDB
+  echo &quot;buildtype=CI&quot; &gt;&gt;  UPDATEDB
+  echo &quot;revision=$revision&quot; &gt;&gt; UPDATEDB
+fi
+
+
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.35.2">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>/opt/build/src/razor_yslpsd/build_scripts/UPDATEDB</propertiesFile>
+              <failTriggerOnMissing>false</failTriggerOnMissing>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+              <useMatrixChild>false</useMatrixChild>
+              <onlyExactRuns>false</onlyExactRuns>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
+          </configs>
+          <projects>yslpsd_CI_usetinydb</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>

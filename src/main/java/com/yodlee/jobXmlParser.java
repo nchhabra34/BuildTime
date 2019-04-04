@@ -1,4 +1,4 @@
-package main.java.com.yodlee;
+	package main.java.com.yodlee;
 
 import java.io.File;
 import java.io.FileReader;
@@ -113,7 +113,7 @@ public class jobXmlParser {
 	    for (int i=0;i<cronnumber.length;i++)
 	    {
 	    	
-	    	//System.out.println("String number-->"+i+cronnumber[i]);
+	    	Jsondata jd = new Jsondata();
 	    	
 	    
 	  
@@ -242,11 +242,9 @@ public class jobXmlParser {
 			makedayslist=makedayslist+","+daysinweek[i1];
 			}
 		}
-		//System.out.println(minute.getExpression().asString());
-		//System.out.println(hour.getExpression().asString());
-		//System.out.println(days.getExpression().asString());
-		//System.out.println(makedayslist);
 		
+		//.setCrondescription(cronnumber[i]);
+		jd.setJobName(key);
 		sd.savexmldate(key, cronnumber[i], description, enable,xmldata);
 	
 	    }

@@ -36,15 +36,18 @@ public class ConnectionUtility {
 		connection.disconnect();
 			
 	}
-	
-	public void mongoConnection()
+	public MongoClient mongoConnection()
 	{
 		
 		MongoClient mongoClient = new MongoClient("127.0.0.1" , 27017 );
 		
-		List db=mongoClient.getDatabaseNames();
-		System.out.println(db);
+		
+		
+		return mongoClient;
 		
 		
 	}
+	
+	
+	
 }

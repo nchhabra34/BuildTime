@@ -31,8 +31,20 @@
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
+      "name" : "dagfeature",
+      "url" : "http://192.168.113.195:9090/job/dagfeature/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
       "name" : "hammerRelease",
       "url" : "http://192.168.113.195:9090/job/hammerRelease/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "iaecommons",
+      "url" : "http://192.168.113.195:9090/job/iaecommons/",
       "color" : "blue"
     },
     {
@@ -51,6 +63,12 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "nextgenyccNPR",
       "url" : "http://192.168.113.195:9090/job/nextgenyccNPR/",
+      "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ngyccappfeature",
+      "url" : "http://192.168.113.195:9090/job/ngyccappfeature/",
       "color" : "blue"
     },
     {
@@ -58,6 +76,12 @@
       "name" : "ngyccapprelease",
       "url" : "http://192.168.113.195:9090/job/ngyccapprelease/",
       "color" : "disabled"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ngyccemailtest",
+      "url" : "http://192.168.113.195:9090/job/ngyccemailtest/",
+      "color" : "red"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -81,7 +105,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_OAUTHCLIENT_NPR",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_NPR/",
-      "color" : "yellow"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -93,7 +117,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_OAUTHCLIENT_PSD",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -147,30 +171,18 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_fincheck_usetinydb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_fincheck_usetinydb/",
-      "color" : "notbuilt"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_moneysupport",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_moneysupport/",
-      "color" : "yellow"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_moneysupport_usetinydb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_moneysupport_usetinydb/",
-      "color" : "blue"
-    },
-    {
-      "_class" : "hudson.model.FreeStyleProject",
-      "name" : "NightlyProwler_YSL_newarch",
-      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch/",
-      "color" : "blue"
-    },
-    {
-      "_class" : "hudson.model.FreeStyleProject",
-      "name" : "NightlyProwler_YSL_newarch_usetinydb",
-      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_newarch_usetinydb/",
       "color" : "blue"
     },
     {
@@ -189,7 +201,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_nprplus",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_nprplus/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -225,7 +237,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_smb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_smb/",
-      "color" : "disabled"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -267,6 +279,24 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_wellness_usetinydb",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_wellness_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSLnewarch",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSLnewarch/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "NightlyProwler_YSLnewarch_usetinydb",
+      "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSLnewarch_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "nodefinappVXappdev",
+      "url" : "http://192.168.113.195:9090/job/nodefinappVXappdev/",
       "color" : "blue"
     },
     {
@@ -355,6 +385,18 @@
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
+      "name" : "sample",
+      "url" : "http://192.168.113.195:9090/job/sample/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "sdp2_package_artifact_buildteam_56.81",
+      "url" : "http://192.168.113.195:9090/job/sdp2_package_artifact_buildteam_56.81/",
+      "color" : "notbuilt"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
       "name" : "sdp2_package_artifact_buildteam_devops",
       "url" : "http://192.168.113.195:9090/job/sdp2_package_artifact_buildteam_devops/",
       "color" : "disabled"
@@ -381,6 +423,24 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "usetinydb_add",
       "url" : "http://192.168.113.195:9090/job/usetinydb_add/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "wealthngyccappfeature",
+      "url" : "http://192.168.113.195:9090/job/wealthngyccappfeature/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "wealthngyccservicesfeature",
+      "url" : "http://192.168.113.195:9090/job/wealthngyccservicesfeature/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "wealthreqgen",
+      "url" : "http://192.168.113.195:9090/job/wealthreqgen/",
       "color" : "blue"
     },
     {
@@ -435,12 +495,18 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "ysl-fincheck",
       "url" : "http://192.168.113.195:9090/job/ysl-fincheck/",
-      "color" : "notbuilt"
+      "color" : "aborted"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
-      "name" : "ysl-newarch",
-      "url" : "http://192.168.113.195:9090/job/ysl-newarch/",
+      "name" : "ysl-test-framework",
+      "url" : "http://192.168.113.195:9090/job/ysl-test-framework/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "ysl-test-framework-jar",
+      "url" : "http://192.168.113.195:9090/job/ysl-test-framework-jar/",
       "color" : "blue"
     },
     {
@@ -453,7 +519,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "ysleinstein",
       "url" : "http://192.168.113.195:9090/job/ysleinstein/",
-      "color" : "red"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -469,20 +535,32 @@
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslmarch2019",
+      "url" : "http://192.168.113.195:9090/job/yslmarch2019/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
       "name" : "Yslmoneysupport",
       "url" : "http://192.168.113.195:9090/job/Yslmoneysupport/",
-      "color" : "yellow"
+      "color" : "red"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "YSLMONEYSUPPORT_CI",
       "url" : "http://192.168.113.195:9090/job/YSLMONEYSUPPORT_CI/",
-      "color" : "blue"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslmoneysupport_CI_usetinydb",
       "url" : "http://192.168.113.195:9090/job/yslmoneysupport_CI_usetinydb/",
+      "color" : "blue"
+    },
+    {
+      "_class" : "hudson.model.FreeStyleProject",
+      "name" : "yslnewarch",
+      "url" : "http://192.168.113.195:9090/job/yslnewarch/",
       "color" : "blue"
     },
     {
@@ -519,7 +597,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslnprplus",
       "url" : "http://192.168.113.195:9090/job/yslnprplus/",
-      "color" : "yellow"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -543,7 +621,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslnprplusYSLtc",
       "url" : "http://192.168.113.195:9090/job/yslnprplusYSLtc/",
-      "color" : "red"
+      "color" : "disabled"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -591,7 +669,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "YSLSMB_CI",
       "url" : "http://192.168.113.195:9090/job/YSLSMB_CI/",
-      "color" : "disabled"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -675,7 +753,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "yslwellnessremotecall",
       "url" : "http://192.168.113.195:9090/job/yslwellnessremotecall/",
-      "color" : "blue"
+      "color" : "red"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
