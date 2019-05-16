@@ -3,7 +3,12 @@
   <actions/>
   <description>This will be the CI job for YSL running from 192.168.210.72</description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+  </properties>
   <scm class="hudson.scm.NullSCM"/>
   <assignedNode>192.168.210.72</assignedNode>
   <canRoam>false</canRoam>

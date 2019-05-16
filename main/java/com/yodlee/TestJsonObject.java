@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -174,7 +176,10 @@ public class TestJsonObject {
 	  jd.setJobName(key);
 	  jd.setCrondescription(crondescription);
 		
-	  fetchJobData(thing,jd);
+	  
+	// jobFilter(key,jd,thing);
+	  
+	 fetchJobData(thing,jd);
 		String jsonString = new JSONObject()
         .put("JobName",jd.getJobName())
         .put("Buildable",jd.getBuildable())
@@ -204,13 +209,63 @@ public class TestJsonObject {
 		 jsonob.objectcreation(jsonclassdata);
 		
 		}
-	public static Jsondata fetchJobData(String thing, Jsondata jd) throws IOException, JSONException
+	
+	// Adding the job filter to  get downstream from nightly prowler jobs
+	/*static Jsondata jobFilter(String key,Jsondata jd, String thing) throws JSONException, IOException
 	{
 		
-		/*for (Entry<String,String> entry : jobMap.entrySet()) {
-	    String key = entry.getKey();
-	    String thing = entry.getValue();
-	    */
+		String nightregex="(?i)^(nightlyprowler_.*_*)";
+		
+		Pattern nightp= Pattern.compile(nightregex);
+		Matcher cim ;
+		Matcher nightm;
+		
+			
+			nightm=nightp.matcher(key);
+			if(nightm.matches())
+			{
+				
+				ConnectionUtility cu= new ConnectionUtility();
+				  
+			    
+				   HttpURLConnection conn = cu.createConnection(thing+"api/json?pretty=true");
+				    
+				   InputStream ips;
+					
+					BufferedReader buf ;
+
+					StringBuilder sb = new StringBuilder();
+				    String s;
+				    ips=  conn.getInputStream();
+					
+				    buf = new BufferedReader(new InputStreamReader(ips));
+
+			        
+			       
+			       
+			        while ((s=buf.readLine()) != null) {
+			        	
+			            
+			          
+			           sb.append(s+'\r');
+			          
+			        		
+			        }   
+			        buf.close();
+			       String jobdata=sb.toString();
+			       
+			       
+			}
+			else
+			{
+				fetchJobData(key,jd);
+				
+			}
+		
+		return jd;
+	}*/
+	public static String fetchJobData(String thing, Jsondata jd) throws IOException, JSONException
+	{
 	    ConnectionUtility cu= new ConnectionUtility();
 	  
 	    
@@ -242,7 +297,7 @@ public class TestJsonObject {
      
         parseJobData(jobdata,jd);  
         
-        return jd;
+        return jobdata;
 	    
         
 	}
@@ -255,20 +310,23 @@ public class TestJsonObject {
 		
 		 
 		 System.out.println(jsonObj.get("url"));
-		
+		 
 		 int lastbuilnumber; 
 		 String jobName;
 		 String labelExpression = null;
 		 boolean buildableboolean;
 		 String buildable;
 		 String url=jsonObj.get("url").toString();
+		 jobName=jsonObj.get("name").toString();
+		 // Condtion to check if job name has nightlyprowler so we can take downstream of that job to get server and sucess failure
+		
 		 
-		 if ( (jsonObj.isNull("lastBuild"))) {
+			 if ( (jsonObj.isNull("lastBuild"))) {
 			 
 			 //System.out.println("Last build number found is null");
 			 lastbuilnumber=0;
 			 jobName=jsonObj.getString("name");
-			 //healthReport="0";
+			
 			 try{
 			 labelExpression=jsonObj.getString("labelExpression");
 			 }
@@ -278,8 +336,8 @@ public class TestJsonObject {
 			 }
 			 buildableboolean=jsonObj.getBoolean("buildable");
 			 }
-		 else
-		 {
+			 else
+			 {
 			 System.out.println("calling else ");
 			 jlastbuildnumber=(JSONObject) jsonObj.get("lastBuild");
 			 lastbuilnumber=(int) jlastbuildnumber.get("number");
@@ -289,9 +347,7 @@ public class TestJsonObject {
 			 
 			 url=jsonObj.get("url").toString();
 			 labelExpression=jsonObj.getString("labelExpression");
-			 //JobJsonParsing jp = new JobJsonParsing();
-			// jp.fetchJobLastBuildData(lastbuilnumber, jobName,null ,url, labelExpression);
-		 }
+			 			 }
 		 if(buildableboolean == true)
 		 {
 			 

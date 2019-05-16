@@ -48,7 +48,7 @@ sh commonyslbuild.sh build ${CHANGELIST}</command>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
               <properties>product=YSL
-branch=fincheck
+branch=newarch
 buildtype=nightly
 revision=${CHANGELIST}</properties>
               <textParamValueOnNewLine>false</textParamValueOnNewLine>

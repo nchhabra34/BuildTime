@@ -25,9 +25,9 @@ public class MainTest {
 		//cu.mongoConnection();
 
 
-		System.out.println(cu.mongoConnection().getDatabase("BuildTimeApp").getCollection("ci_data"));
+		System.out.println(cu.mongoConnection().getDatabase("BuildTimeApp").getCollection("cidatas"));
 	DB db=cu.mongoConnection().getDB("BuildTimeApp");
-	DBCollection col= db.getCollection("nightlydata");
+	DBCollection col= db.getCollection("nightdatas");
 	java.util.List ldlst= col.distinct("JobName");
 	
 	String[] stockArr = new String[ldlst.size()] ;

@@ -96,8 +96,8 @@ public class Jsonobjectbuilder {
 		}
 		
 		DbFunction db = new DbFunction();
-		db.dbInsert(db.mongoConnection(), jsonlistci,"ci_data");
-		db.dbInsert(db.mongoConnection(), jsonlistfsb, "nightlydata");
+		db.dbInsert(db.mongoConnection(), jsonlistci,"cidatas");
+		db.dbInsert(db.mongoConnection(), jsonlistfsb, "nightdatas");
 		
 		
 	}
