@@ -41,8 +41,9 @@ public class Mainjobparsertest {
 		SaveData sd = new SaveData();
 		String description = null;
 		String FILE="D:/dap1/FetchBuildTime/Resources/xml/xmldata.csv";
+		String JobName="DAPGATHERER_FEATURE_CI";
 		ArrayList<String[]> xmldata = new ArrayList<String[]>();
-		String thing="http://192.168.113.195:9090/view/YSL/job/NightlyProwler_YSL_wellness/";
+		String thing="http://192.168.113.195:9090/job/"+JobName+"/";
 		    ConnectionUtility cu= new ConnectionUtility();
 		    
 		    //System.out.println(thing+"config.xml");
@@ -52,7 +53,7 @@ public class Mainjobparsertest {
 		 conn.connect();
 		 InputStream ips ;
 		 ips= conn.getInputStream();
-		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+"NightlyProwler_YSL_wellness"+".xml");
+		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+JobName+".xml");
 		 URL url = new URL(thing+"config.xml");
 		 BufferedInputStream bis = new BufferedInputStream(ips);
 	     FileOutputStream fis = new FileOutputStream(file);
@@ -69,7 +70,7 @@ public class Mainjobparsertest {
 	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	        try{
 	        DocumentBuilder builder = factory.newDocumentBuilder();
-	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+"NightlyProwler_YSL_wellness"+".xml"));
+	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+JobName+".xml"));
 	        doc.getDocumentElement().normalize();
 	        
 	      NodeList nodelist3 = doc.getElementsByTagName("spec");

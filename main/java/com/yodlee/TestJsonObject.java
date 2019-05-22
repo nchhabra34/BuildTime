@@ -44,6 +44,8 @@ public class TestJsonObject {
 	public static void main(String[] args) throws IOException, SAXException {
 		ListJobs lj = new ListJobs();
 		String output=lj.fetchJoblist("http://192.168.113.195:9090/api/json?pretty=true");
+		String currentDirectory = System.getProperty("user.dir");
+		System.out.println(currentDirectory);
 		Map<String, String> jobMap= lj.parseJsondata(output);
 		List<JSONObject> jsonobjectlist = new ArrayList<JSONObject>();
 		String jobdata=null;
@@ -60,7 +62,7 @@ public class TestJsonObject {
 		 conn.connect();
 		 InputStream ips ;
 		 ips= conn.getInputStream();
-		 File file = new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml");
+		 File file = new File(currentDirectory+"/Resources/xml/"+key+".xml");
 		 URL url = new URL(thing+"config.xml");
 		 BufferedInputStream bis = new BufferedInputStream(ips);
 	     FileOutputStream fis = new FileOutputStream(file);
@@ -80,7 +82,7 @@ public class TestJsonObject {
 	        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	        try{
 	        DocumentBuilder builder = factory.newDocumentBuilder();
-	        Document doc=builder.parse(new File("D:/dap1/FetchBuildTime/Resources/xml/"+key+".xml"));
+	        Document doc=builder.parse(new File(currentDirectory+"/Resources/xml/"+key+".xml"));
 	        doc.getDocumentElement().normalize();
 	        
 	      NodeList nodelist3 = doc.getElementsByTagName("spec");
