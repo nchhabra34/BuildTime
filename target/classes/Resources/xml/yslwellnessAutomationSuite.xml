@@ -1,0 +1,135 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <inheritanceStrategy class="org.jenkinsci.plugins.matrixauth.inheritance.InheritParentStrategy"/>
+      <permission>hudson.model.Item.Build:avaka</permission>
+      <permission>hudson.model.Item.Build:engplt</permission>
+      <permission>hudson.model.Item.Build:ktandon</permission>
+      <permission>hudson.model.Item.Configure:engplt</permission>
+      <permission>hudson.model.Item.Discover:avaka</permission>
+      <permission>hudson.model.Item.Discover:engplt</permission>
+      <permission>hudson.model.Item.Discover:ktandon</permission>
+      <permission>hudson.model.Item.Read:anonymous</permission>
+      <permission>hudson.model.Item.Read:avaka</permission>
+      <permission>hudson.model.Item.Read:engplt</permission>
+      <permission>hudson.model.Item.Read:ktandon</permission>
+      <permission>hudson.model.Item.Workspace:avaka</permission>
+      <permission>hudson.model.Item.Workspace:engplt</permission>
+      <permission>hudson.model.Item.Workspace:ktandon</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>build</name>
+          <description></description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <quietPeriod>600</quietPeriod>
+  <assignedNode>192.168.210.155</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>true</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>C:\qaAutomation</customWorkspace>
+  <builders>
+    <hudson.tasks.BatchFile>
+      <command>echo BUILD_NUMBER=%build%&#xd;
+&#xd;
+set &quot;JAVA_HOME&quot;=&quot;C:\Program Files\Java\jdk1.8.0_131&quot;&#xd;
+set M2_HOME=C:\apache-maven-3.5.0&#xd;
+set PATH=%JAVA_HOME%\bin;%M2_HOME%\bin;%PATH%&#xd;
+cd C:\qaAutomation\YodleeAPIAryabhataGA&#xd;
+mvn clean test -DsuiteXmlFile=Testng4.xml -Dconfile=ConfigDevBox.Properties -Dmaven.test.failure.ignore=true</command>
+    </hudson.tasks.BatchFile>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>**\target\surefire-reports\html\*.*</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
+    <hudson.tasks.Mailer plugin="mailer@1.21">
+      <recipients>KTandon@yodlee.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.62">
+      <recipientList>KTandon@yodlee.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+          <email>
+            <recipientList>mbarnwal@Yodlee.com, KTandon@yodlee.com</recipientList>
+            <subject>YSL Newarch Automation suite Successful</subject>
+            <body>YSL Newarch Build $build Automation suite Successful
+
+http://192.168.210.72:9090/jenkins/job/yslNewarchAutomationSuite/$BUILD_NUMBER/artifact/YodleeAPIAryabhataGA/target/surefire-reports/html/index.html
+
+${FILE,path=&quot;YodleeAPIAryabhataGA/target/surefire-reports/html/index.html&quot;}
+</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>mbarnwal@Yodlee.com, KTandon@yodlee.com, YSL-Eng@yodlee.com</replyTo>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>mbarnwal@Yodlee.com, KTandon@yodlee.com</recipientList>
+            <subject>YSL Newarch Automation suite Failed</subject>
+            <body>YSL Newarch Build $build Automation suite Failed
+</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.CulpritsRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern>**\target\surefire-reports\html\index.html</attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>mbarnwal@Yodlee.com, KTandon@yodlee.com, YSL-Eng@yodlee.com</replyTo>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>text/html</contentType>
+      <defaultSubject>YSL Newarch Automation suite</defaultSubject>
+      <defaultContent>YSL Newarch Build $build Automation suite
+
+http://192.168.210.72:9090/jenkins/job/yslwellnessAutomationSuite/$BUILD_NUMBER/artifact/YodleeAPIAryabhataGA/target/surefire-reports/html/index.html
+
+${FILE,path=&quot;YodleeAPIAryabhataGA/target/surefire-reports/html/index.html&quot;}</defaultContent>
+      <attachmentsPattern>**\target\surefire-reports\html\index.html</attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>KTandon@yodlee.com</replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.19">
+      <strategy class="hudson.plugins.build_timeout.impl.AbsoluteTimeOutStrategy">
+        <timeoutMinutes>300</timeoutMinutes>
+      </strategy>
+      <operationList>
+        <hudson.plugins.build__timeout.operations.AbortOperation/>
+      </operationList>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>

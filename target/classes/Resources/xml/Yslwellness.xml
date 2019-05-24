@@ -1,0 +1,123 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Dynamic API daily build</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.28">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>CHANGELIST</name>
+          <description></description>
+          <defaultValue>0</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.56.84</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/opt/build/src/razor_yslwellness</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>source ~/.bash_profile 
+cd /opt/build/src/razor_yslwellness/build_scripts
+source /opt/build/src/razor_yslwellness/build_scripts/build.conf
+p4 sync //builds/ysl/wellness/commonyslbuild.sh
+sh /opt/build/src/razor_yslwellness/build_scripts/commonyslbuild.sh build ${CHANGELIST}
+echo BUILD_NUMBER=`cat build.properties | grep Build_Number | cut -d &quot;=&quot; -f2`
+
+cd /opt/build/src/razor_yslwellness/build_scripts
+echo &quot;BUILD_NUMBER=`cat build.properties | grep Build_Number | cut -d &quot;=&quot; -f2`&quot; &gt; ../bldno.properties</command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.sonar.SonarRunnerBuilder plugin="sonar@2.8">
+      <project></project>
+      <properties>sonar.projectKey=my:YSLWELLNESS
+sonar.projectName=YSLWELLNESS
+sonar.scm.disabled=true
+sonar.projectVersion=1.0.0
+sonar.perforce.port=192.168.210.178:16060
+sonar.perforce.clientName=blr-bld-jenkins3.builder.yslwellness
+sonar.sources=modules/authdom/src,modules/core-services/authentication-crypto-services/src,modules/core-services/authentication-services/src,modules/core-services/context.definition.service/src,modules/core-services/core.support.common/src,modules/core-services/core.support.util/src,modules/core-services/session.services/src,modules/core-services/core.validation.services/src,modules/dapi/src/main/java,modules/jdbcservice/src,modules/configservice/src,modules/logging/src,modules/security/src,modules/dom/src,modules/domx/src,modules/util-filtering/src,modules/yccdom/src,modules/common/src,modules/RestBridge/src,modules/cacheservice/src,modules/cachesupportutil/src,modules/notifications/src,modules/LuceneService/src,modules/yccdomx/src
+
+sonar.java.binaries=modules/authdom/target/classes,modules/core-services/authentication-crypto-services/target/classes,modules/core-services/authentication-services/target/classes,modules/core-services/context.definition.service/target/classes,modules/core-services/core.support.common/target/classes,modules/core-services/core.support.util/target/classes,modules/core-services/session.services/target/classes,modules/core-services/core.validation.services/target/classes,modules/dapi/target/classes,modules/jdbcservice/target/classes,modules/configservice/target/classes,modules/logging/target/classes,modules/security/target/classes,modules/dom/target/classes,modules/domx/target/classes,modules/util-filtering/target/classes,modules/yccdom/target/classes,modules/common/target/classes,modules/RestBridge/target/classes,modules/cacheservice/target/classes,modules/cachesupportutil/target/classes,modules/notifications/target/classes,modules/LuceneService/target/classes,modules/yccdomx/target/classes 
+
+sonar.exclusions=**/*l2distributedCache*
+sonar.jacoco.reportPaths=modules/dapi/target/jacoco.exec
+sonar.java.coveragePlugin=jacoco
+sonar.surefire.reportsPath=modules/dapi/target/surefire
+sonar.language=java
+</properties>
+      <javaOpts></javaOpts>
+      <additionalArguments></additionalArguments>
+      <jdk>(Inherit From Job)</jdk>
+      <task></task>
+    </hudson.plugins.sonar.SonarRunnerBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>alpha_ysl_deployment_wellness</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
+    <hudson.plugins.textfinder.TextFinderPublisher plugin="text-finder@1.10">
+      <regexp>ysl build is in progrees. Try after some time</regexp>
+      <succeedIfFound>false</succeedIfFound>
+      <unstableIfFound>true</unstableIfFound>
+      <alsoCheckConsoleOutput>true</alsoCheckConsoleOutput>
+    </hudson.plugins.textfinder.TextFinderPublisher>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.35.2">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>product=YSL
+branch=wellness
+buildtype=nightly
+revision=${CHANGELIST}</properties>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>NightlyProwler_YSL_wellness_usetinydb</projects>
+          <condition>ALWAYS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs class="empty-list"/>
+          <projects>yslwellnessDeploy</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>BUILD_NUMBER=$BUILD_NUMBER</properties>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>yslwellnessremotecall</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>

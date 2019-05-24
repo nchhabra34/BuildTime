@@ -1,0 +1,123 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.security.AuthorizationMatrixProperty>
+      <inheritanceStrategy class="org.jenkinsci.plugins.matrixauth.inheritance.InheritParentStrategy"/>
+      <permission>hudson.model.Item.Build:engplt</permission>
+      <permission>hudson.model.Item.Build:ktandon</permission>
+      <permission>hudson.model.Item.Configure:engplt</permission>
+      <permission>hudson.model.Item.Discover:engplt</permission>
+      <permission>hudson.model.Item.Discover:ktandon</permission>
+      <permission>hudson.model.Item.Read:anonymous</permission>
+      <permission>hudson.model.Item.Read:engplt</permission>
+      <permission>hudson.model.Item.Read:ktandon</permission>
+      <permission>hudson.model.Item.Workspace:engplt</permission>
+      <permission>hudson.model.Item.Workspace:ktandon</permission>
+    </hudson.security.AuthorizationMatrixProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BUILD_NUMBER</name>
+          <description></description>
+          <defaultValue></defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>192.168.57.9</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <customWorkspace>/opt/ctier/khushboo</customWorkspace>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo BUILD_NUMBER=${BUILD_NUMBER}
+echo LATEST_BUILD_NUMBER_DEPLOYED=${BUILD_NUMBER} &gt; /opt/ctier/khushboo/buildNumber.properties
+
+cd /opt/ctier/khushboo/
+sh deploynewarchCITJenkins.sh ${BUILD_NUMBER}</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.Mailer plugin="mailer@1.21">
+      <recipients>KTandon@yodlee.com KNavuluri@yodlee.com okore@yodlee.com agopinath@yodlee.com pparihar1@yodlee.com SMeena@yodlee.com KThogaruchiti@yodlee.com VKumar8@yodlee.com rattur@yodlee.com rvooka@yodlee.com</recipients>
+      <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
+      <sendToIndividuals>false</sendToIndividuals>
+    </hudson.tasks.Mailer>
+    <hudson.plugins.emailext.ExtendedEmailPublisher plugin="email-ext@2.62">
+      <recipientList>KTandon@yodlee.com, VKumar8@yodlee.com, rvooka@yodlee.com, YSL-Eng@yodlee.com, SMeena@yodlee.com, KThogaruchiti@yodlee.com, SVadakkeparampil@yodlee.com, PShivaswamy@yodlee.com, bviswanath@yodlee.com, kdharmar@yodlee.com, AVolety@yodlee.com, rattur@yodlee.com, rvenkatachalapathy@yodlee.com, agopinath@yodlee.com, pparihar1@yodlee.com, okore@yodlee.com, lchandra@Yodlee.com, VShetty@yodlee.com</recipientList>
+      <configuredTriggers>
+        <hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+          <email>
+            <recipientList>mbarnwal@Yodlee.com, KTandon@yodlee.com, VKumar8@yodlee.com, rvooka@yodlee.com, YSL-Eng@yodlee.com, SMeena@yodlee.com, agupta13@yodlee.com, KThogaruchiti@yodlee.com, SVadakkeparampil@yodlee.com, PShivaswamy@yodlee.com, bviswanath@yodlee.com, kdharmar@yodlee.com, AVolety@yodlee.com, rattur@yodlee.com, rvenkatachalapathy@yodlee.com, agopinath@yodlee.com, pparihar1@yodlee.com, okore@yodlee.com, lchandra@Yodlee.com, VShetty@yodlee.com</recipientList>
+            <subject>YSL Newarch deployment Successful</subject>
+            <body>YSL Newarch Build ${BUILD_NUMBER} deployment Successful</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>mbarnwal@Yodlee.com, KTandon@yodlee.com, YSL-Eng@yodlee.com</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.SuccessTrigger>
+        <hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+          <email>
+            <recipientList>mbarnwal@Yodlee.com, KTandon@yodlee.com, VKumar8@yodlee.com, rvooka@yodlee.com, YSL-Eng@yodlee.com, SMeena@yodlee.com, agupta13@yodlee.com, KThogaruchiti@yodlee.com, SVadakkeparampil@yodlee.com, PShivaswamy@yodlee.com, bviswanath@yodlee.com, kdharmar@yodlee.com, AVolety@yodlee.com, rattur@yodlee.com, rvenkatachalapathy@yodlee.com, agopinath@yodlee.com, pparihar1@yodlee.com, okore@yodlee.com, lchandra@Yodlee.com, VShetty@yodlee.com</recipientList>
+            <subject>YSL Newarch deployment Failed</subject>
+            <body>YSL Newarch Build ${BUILD_NUMBER} deployment Failed</body>
+            <recipientProviders>
+              <hudson.plugins.emailext.plugins.recipients.CulpritsRecipientProvider/>
+              <hudson.plugins.emailext.plugins.recipients.ListRecipientProvider/>
+            </recipientProviders>
+            <attachmentsPattern></attachmentsPattern>
+            <attachBuildLog>false</attachBuildLog>
+            <compressBuildLog>false</compressBuildLog>
+            <replyTo>mbarnwal@Yodlee.com, KTandon@yodlee.com, YSL-Eng@yodlee.com</replyTo>
+            <contentType>project</contentType>
+          </email>
+        </hudson.plugins.emailext.plugins.trigger.FailureTrigger>
+      </configuredTriggers>
+      <contentType>text/html</contentType>
+      <defaultSubject>YSL Newarch deployment </defaultSubject>
+      <defaultContent>YSL Newarch Build ${BUILD_NUMBER} deployment completed</defaultContent>
+      <attachmentsPattern></attachmentsPattern>
+      <presendScript></presendScript>
+      <attachBuildLog>false</attachBuildLog>
+      <compressBuildLog>false</compressBuildLog>
+      <replyTo>KTandon@yodlee.com, YSL-Eng@yodlee.com</replyTo>
+      <saveOutput>false</saveOutput>
+      <disabled>false</disabled>
+    </hudson.plugins.emailext.ExtendedEmailPublisher>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.35.2">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.CurrentBuildParameters/>
+            <hudson.plugins.parameterizedtrigger.FileBuildParameters>
+              <propertiesFile>/opt/ctier/khushboo/buildNumber.properties</propertiesFile>
+              <failTriggerOnMissing>false</failTriggerOnMissing>
+              <textParamValueOnNewLine>false</textParamValueOnNewLine>
+              <useMatrixChild>false</useMatrixChild>
+              <onlyExactRuns>false</onlyExactRuns>
+            </hudson.plugins.parameterizedtrigger.FileBuildParameters>
+          </configs>
+          <projects>yslnprplusAutomationSuite</projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+          <triggerFromChildProjects>false</triggerFromChildProjects>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>

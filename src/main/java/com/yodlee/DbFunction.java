@@ -15,7 +15,7 @@ public class DbFunction {
 	public MongoClient mongoConnection()
 	{
 		
-		MongoClient mongoClient = new MongoClient("192.168.113.247" , 27017 );
+		MongoClient mongoClient = new MongoClient("localhost" , 27017 );
 		
 		
 		

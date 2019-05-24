@@ -69,7 +69,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "iaecommons",
       "url" : "http://192.168.113.195:9090/job/iaecommons/",
-      "color" : "red"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -165,7 +165,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_OAUTHCLIENT_PSD",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_OAUTHCLIENT_PSD/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -249,7 +249,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_nprplus",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_nprplus/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -261,7 +261,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_psd",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_psd/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -273,7 +273,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "NightlyProwler_YSL_sdg",
       "url" : "http://192.168.113.195:9090/job/NightlyProwler_YSL_sdg/",
-      "color" : "blue"
+      "color" : "yellow"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -345,7 +345,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "nodefinappVXappdev",
       "url" : "http://192.168.113.195:9090/job/nodefinappVXappdev/",
-      "color" : "red"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",
@@ -687,7 +687,7 @@
       "_class" : "hudson.model.FreeStyleProject",
       "name" : "Yslpsd",
       "url" : "http://192.168.113.195:9090/job/Yslpsd/",
-      "color" : "blue_anime"
+      "color" : "blue"
     },
     {
       "_class" : "hudson.model.FreeStyleProject",

@@ -23,6 +23,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -46,7 +47,9 @@ public class TestJsonObject {
 		String output=lj.fetchJoblist("http://192.168.113.195:9090/api/json?pretty=true");
 		String currentDirectory = System.getProperty("user.dir");
 		System.out.println(currentDirectory);
+		@SuppressWarnings("unchecked")
 		Map<String, String> jobMap= lj.parseJsondata(output);
+		@SuppressWarnings("unused")
 		List<JSONObject> jsonobjectlist = new ArrayList<JSONObject>();
 		String jobdata=null;
 		
@@ -54,6 +57,7 @@ public class TestJsonObject {
 		for (Entry<String, String> entry : jobMap.entrySet()) {
 		    String key = entry.getKey();
 		    String thing = entry.getValue();
+		    Jsondata jd = new Jsondata();
 		    ConnectionUtility cu= new ConnectionUtility();
 		    List<String> crondescription=new ArrayList<>();
 		 HttpURLConnection conn = cu.createConnection(thing+"config.xml");
@@ -110,7 +114,7 @@ public class TestJsonObject {
 	     else
 	     {
 	    String [] cronnumber=  timestamp.split("\n");
-	    Jsondata jd = new Jsondata();
+	    
 	    for (int i=0;i<cronnumber.length;i++)
 	    {
 	   CronType yahoo= CronType.CRON4J;
@@ -171,23 +175,24 @@ public class TestJsonObject {
 	String yearfiled=days.getExpression().asString();
 	String getdays=days.getExpression().asString();
 	System.out.println(getdays);
-	
+
 	    }
 	  	
 	  //System.out.println("final json array length-->"+crondescription.size());
 	  jd.setJobName(key);
 	  jd.setCrondescription(crondescription);
+	  jd.setUrl(thing);
 		
 	  
 	// jobFilter(key,jd,thing);
 	  
 	 fetchJobData(thing,jd);
 		String jsonString = new JSONObject()
-        .put("JobName",jd.getJobName())
-        .put("Buildable",jd.getBuildable())
-        .put("server",jd.getLabelExpression())
-        .put("lastbuild", jd.getLastbuilnumber())
-        .put("CronDescription", jd.getCrondescription()).toString();
+	    .put("JobName",jd.getJobName())
+	    .put("Buildable",jd.getBuildable())
+	    .put("server",jd.getLabelExpression())
+	    .put("lastbuild", jd.getLastbuilnumber())
+	    .put("CronDescription", jd.getCrondescription()).toString();
 		
 		System.out.println(jsonString);
 		 
@@ -204,13 +209,13 @@ public class TestJsonObject {
 	        	e.printStackTrace();
 	        }
 	        
-	
-	        
+		   
 	}
 		Jsonobjectbuilder jsonob = new Jsonobjectbuilder();
 		 jsonob.objectcreation(jsonclassdata);
 		
 		}
+	
 	
 	// Adding the job filter to  get downstream from nightly prowler jobs
 	/*static Jsondata jobFilter(String key,Jsondata jd, String thing) throws JSONException, IOException
@@ -265,9 +270,60 @@ public class TestJsonObject {
 			}
 		
 		return jd;
+		
 	}*/
+	
+	/*	public static String processnightlyjobs(String thing, Jsondata jd, String currentDirectory,String key,List<Jsondata> jsonclassdata) throws IOException
+		{
+			
+			ConnectionUtility cu= new ConnectionUtility();
+			  
+		    
+			   HttpURLConnection conn = cu.createConnection(thing+"api/json?pretty=true");
+			    
+			   InputStream ips;
+				
+				BufferedReader buf ;
+
+				StringBuilder sb = new StringBuilder();
+			    String s;
+			    ips=  conn.getInputStream();
+				
+			    buf = new BufferedReader(new InputStreamReader(ips));
+		       
+		        while ((s=buf.readLine()) != null) {
+		        	
+		            
+		          
+		           sb.append(s+'\r');
+		          
+		        		
+		        }   
+		        buf.close();
+		       String jobdata=sb.toString();
+		       JSONObject jsonObj = new JSONObject(jobdata);
+		       JSONArray downstreamarray=  (JSONArray) jsonObj.get("downstreamProjects");
+		       String downstreamurl = null;
+		       for (int i=0;i<downstreamarray.length();i++)
+		       {
+		    	   JSONObject jsonobject = downstreamarray.getJSONObject(i);
+		        downstreamurl=jsonobject.getString("url");
+		      
+		       }
+		       System.out.println(downstreamurl);
+			return downstreamurl;
+		       
+		       
+		       
+			
+		}*/
+
+
+
 	public static String fetchJobData(String thing, Jsondata jd) throws IOException, JSONException
 	{
+		 
+		
 	    ConnectionUtility cu= new ConnectionUtility();
 	  
 	    
@@ -304,8 +360,9 @@ public class TestJsonObject {
         
 	}
 	
+	
 		
-	static Jsondata parseJobData(String jobdata, Jsondata jd) throws JSONException
+	static Jsondata parseJobData(String jobdata, Jsondata jd) throws JSONException, IOException
 	{
 		JSONObject jsonObj = new JSONObject(jobdata);
 		 JSONObject jlastbuildnumber = new JSONObject(jsonObj.get("lastBuild"));
@@ -320,8 +377,25 @@ public class TestJsonObject {
 		 String buildable;
 		 String url=jsonObj.get("url").toString();
 		 jobName=jsonObj.get("name").toString();
-		 // Condtion to check if job name has nightlyprowler so we can take downstream of that job to get server and sucess failure
-		
+		 
+		 if (jobName.contains("NightlyProwler"))
+		    {
+		    	System.out.println("entering in the nightly if condition"+jobName);
+		    	//String downstreamurl=processnightlyjobs(thing, jd, currentDirectory, key, jsonclassdata);
+		    	
+			       JSONArray downstreamarray=  (JSONArray) jsonObj.get("downstreamProjects");
+			       String downstreamurl = null;
+			       for (int i=0;i<downstreamarray.length();i++)
+			       {
+			    	   JSONObject jsonobject = downstreamarray.getJSONObject(i);
+			        downstreamurl=jsonobject.getString("url");
+			      
+			       }
+			       System.out.println(downstreamurl);
+			       fetchJobData(downstreamurl, jd);
+		    }
+		 else
+		 {
 		 
 			 if ( (jsonObj.isNull("lastBuild"))) {
 			 
@@ -364,7 +438,7 @@ public class TestJsonObject {
 		 jd.setBuildableboolean(buildableboolean);
 		 jd.setLastbuilnumber(lastbuilnumber);
 		 jd.setLabelExpression(labelExpression);
-		 
+		 }
 		return jd;
 		 
 		
@@ -439,7 +513,7 @@ public class TestJsonObject {
 					jd.setLabelExpression(labelExpression);
 					jd.setTimestamp(timestamp);
 					jd.setEstimatedDuration(estimatedDuration);
-					jd.setUrl(url);
+					//jd.setUrl(url);
 					
 					
 					return jd;
